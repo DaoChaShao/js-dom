@@ -7,7 +7,7 @@ import {
     replace, getLength,
     randomColour, colourChange, moveIn, moveOut,
     pressedKey,
-} from "./utilis.js";
+} from "./utils.js";
 
 function main() {
     const a = parseFloat(randomFloat(1, 10).toFixed(2));
