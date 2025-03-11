@@ -1,0 +1,22 @@
+#welcome-link {
+    text-decoration: none;
+}
+
+#welcome-button:hover {
+    background-color: #00f;
+    border: 1px solid #00f;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+}
+
+#colour-box {
+    background-color: #f00;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+
+    transition: background-color 0.5s ease;
+}
