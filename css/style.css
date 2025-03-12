@@ -1,3 +1,7 @@
+button {
+    align-self: flex-start;
+}
+
 #welcome-link {
     text-decoration: none;
 }
@@ -19,4 +23,68 @@
     cursor: pointer;
 
     transition: background-color 0.5s ease;
+}
+
+#image {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#image img {
+    width: 100px;
+    cursor: pointer;
+
+    transition: transform 0.5s ease;
+}
+
+#class-name {
+    display: flex;
+    flex-direction: column;
+}
+
+#class-name-show {
+    width: 100px;
+    height: 100px;
+    background-color: #f00;
+    display: inline-block;
+}
+
+#class-name-show.class-box {
+    width: 50px;
+    height: 50px;
+    background-color: #00f;
+}
+
+#slider-image, #slider-time-image {
+    width: 100px;
+    cursor: pointer;
+}
+
+#slider-content, #slider-time-content {
+    width: 100px;
+    text-align: center;
+}
+
+.slider-list, .slider-time-list {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+    list-style: none;
+}
+
+.slider-list li, .slider-time-list li {
+    width: 12px;
+    height: 12px;
+    background-color: gray;
+    opacity: 0.3;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.slider-list li.active, .slider-time-list li.time-active {
+    background-color: black;
+    opacity: 1;
 }
