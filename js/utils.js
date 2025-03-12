@@ -91,3 +91,17 @@ export function pressedKey(e, keyShow) {
         keyShow.innerText = `KeyCode: ${e.keyCode}`;
     }
 }
+
+export function imageChanger(images) {
+    const index = Math.floor(Math.random() * images.length);
+    const path = images[index];
+    const alt = path.split("/").pop().split("-")[1].split(".")[0];
+    return {index, path, alt};
+}
+
+export function timeShow(now) {
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const second = now.getSeconds();
+    return `${hour}:${minute}:${second}`;
+}
