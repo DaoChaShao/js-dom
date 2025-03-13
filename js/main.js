@@ -18,6 +18,7 @@ import {
     welcomeButton,
     welcomeLink,
 } from "./utils.js";
+import {faker} from "https://esm.sh/@faker-js/faker"
 
 const IMAGES = ["assets/img-cola.png", "assets/img-grape.png", "assets/img-orange.png", "assets/img-soda.png"]
 
@@ -241,6 +242,12 @@ function main() {
         oItemActive.classList.remove("time-active");
         oItem.classList.add("time-active");
     }, 1000);
+
+    const oFaker = document.querySelector("#faker");
+    const oLabel = document.createElement("label");
+    oFaker.appendChild(oLabel);
+    const randomName = faker.person.fullName();
+    oLabel.textContent = `Random Name: ${randomName}`;
 }
 
 main()
