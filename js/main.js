@@ -1,12 +1,14 @@
 import {
     additionOld,
     colourChange,
+    commentItemCreator,
     copy,
     getLength,
     imageChanger,
     inserter,
     moveIn,
     moveOut,
+    nameSelector,
     pressedKey,
     randomColour,
     randomFloat,
@@ -18,9 +20,11 @@ import {
     welcomeButton,
     welcomeLink,
 } from "./utils.js";
-import {faker} from "https://esm.sh/@faker-js/faker"
+import {faker, fakerZH_CN} from "https://esm.sh/@faker-js/faker"
 
-const IMAGES = ["assets/img-cola.png", "assets/img-grape.png", "assets/img-orange.png", "assets/img-soda.png"]
+const DRINK = ["assets/drink/beverage-cola.png", "assets/drink/beverage-grape.png", "assets/drink/beverage-orange.png", "assets/drink/beverage-soda.png"]
+const FOOD = ["assets/food/icecream-grape.png", "assets/food/icecream-mint.png", "assets/food/icecream-soda.png", "assets/food/icecream-strawberry.png"]
+const PLANT = ["assets/plant/tree-darkgreen.png", "assets/plant/tree-lightgreen.png", "assets/plant/tree-red.png", "assets/plant/tree-yellow.png"]
 
 function main() {
     const a = parseFloat(randomFloat(1, 10).toFixed(2));
@@ -137,7 +141,7 @@ function main() {
     const oImg = document.createElement("img");
     oDivImg.appendChild(oImg);
     oImgButton.addEventListener("click", _ => {
-        const {path, alt} = imageChanger(IMAGES);
+        const {path, alt} = imageChanger(DRINK);
         oImg.src = path;
         oImg.alt = alt;
         oImg.title = `This is a ${alt}`;
@@ -167,7 +171,7 @@ function main() {
 
     const oSliderImage = document.querySelector("#slider-image");
     const oSliderContent = document.querySelector("#slider-content");
-    const {index, path, alt} = imageChanger(IMAGES);
+    const {index, path, alt} = imageChanger(DRINK);
     oSliderImage.src = path;
     oSliderImage.alt = alt;
     oSliderContent.textContent = alt;
@@ -226,28 +230,131 @@ function main() {
     const oTimeContent = document.querySelector("#slider-time-content");
     let s = 0;
     setInterval(function () {
-        s = (s + 1) % IMAGES.length;
-        if (s === IMAGES.length) {
+        s = (s + 1) % DRINK.length;
+        if (s === DRINK.length) {
             s = 0;
         }
-        console.log(s);
-        const {path, alt} = imageChanger(IMAGES);
+        // console.log(s);
+        const {path, alt} = imageChanger(DRINK);
         const oItem = document.querySelector(`.slider-time-list li:nth-child(${s + 1})`);
         oTimeImageDiv.src = path;
         oTimeImageDiv.alt = alt;
         oTimeImageDiv.title = `This is a ${alt}`;
         oTimeContent.textContent = alt;
-        console.log(oItem)
+        // console.log(oItem)
         const oItemActive = document.querySelector(".slider-time-list .time-active");
         oItemActive.classList.remove("time-active");
         oItem.classList.add("time-active");
     }, 1000);
 
     const oFaker = document.querySelector("#faker");
-    const oLabel = document.createElement("label");
-    oFaker.appendChild(oLabel);
-    const randomName = faker.person.fullName();
-    oLabel.textContent = `Random Name: ${randomName}`;
+    const oFakerStart = document.createElement("button");
+    oFakerStart.type = "button";
+    oFakerStart.textContent = "Start";
+    oFaker.appendChild(oFakerStart);
+    const oFakerStop = document.createElement("button");
+    oFakerStop.type = "button";
+    oFakerStop.textContent = "Stop";
+    oFaker.appendChild(oFakerStop);
+    const oFakerLabel = document.createElement("label");
+    oFaker.appendChild(oFakerLabel);
+    const NAMES = [];
+    for (let i = 0; i < 3; i++) {
+        // NAMES.push(faker.person.firstName());
+        NAMES.push(fakerZH_CN.person.fullName());
+    }
+    console.log(NAMES);
+    let timerFaker;
+    let randIndex;
+    oFakerStart.addEventListener("click", _ => {
+        timerFaker = setInterval(_ => {
+            const result = nameSelector(NAMES);
+            randIndex = result.randIndex;
+            oFakerLabel.textContent = result.randName;
+        }, 100);
+
+        if (NAMES.length === 1) {
+            // oFakerStart.disabled = true;
+            // oFakerStop.disabled = true;
+            oFakerStart.disabled = oFakerStop.disabled = true;
+        }
+    }, false);
+    oFakerStop.onclick = _ => {
+        clearInterval(timerFaker);
+        NAMES.splice(randIndex, 1);
+        console.log(NAMES.length);
+    }
+
+    const oCommentShow = document.querySelector("#event-key-show");
+    const oCommentInput = document.querySelector("#event-key-input");
+    const oCommentButton = document.querySelector("#event-key-button");
+    const oCommentLabel = document.querySelector("#event-key-label");
+    oCommentButton.addEventListener("click", _ => {
+        const oComment = document.createElement("label");
+        oCommentShow.appendChild(oComment);
+        if (oCommentInput.value.trim() === "") {
+            oComment.textContent = "Please enter valid comment!";
+        } else {
+            oComment.textContent = oCommentLabel.textContent = oCommentInput.value.trim();
+        }
+        oCommentInput.value = "";
+    });
+    oCommentInput.addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+            oCommentLabel.textContent = oCommentInput.value.trim();
+            oCommentInput.value = "";
+        }
+    })
+
+    const oCommentZone = document.querySelector("#comment-item");
+    const oZoneCreateButton = document.createElement("button");
+    oZoneCreateButton.type = "button";
+    oZoneCreateButton.textContent = "Comment";
+    oCommentZone.appendChild(oZoneCreateButton);
+    oZoneCreateButton.addEventListener("click", _ => {
+        const data = {
+            // https://fakerjs.dev/api/
+            avatar: faker.image.avatarGitHub(),
+            name: faker.person.fullName(),
+            gender: faker.person.sex(),
+            age: faker.number.bigInt({min: 18, max: 65}),
+            level: faker.number.bigInt({min: 1, max: 12}),
+            email: faker.internet.email(),
+            city: faker.location.city(),
+            phone: faker.phone.number({style: 'national'}),
+            comment: faker.lorem.paragraphs(),
+            time: faker.date.between({from: "2000-01-01", to: Date.now()}),
+        };
+        commentItemCreator(data);
+    })
+
+    const oTabList = document.querySelectorAll("#tab-list li");
+    for (let i = 0; i < oTabList.length; i++) {
+        oTabList[i].addEventListener("mouseenter", _ => {
+            oTabList.forEach(item => {
+                item.classList.remove("tab-list-active");
+            })
+            oTabList[i].classList.add("tab-list-active");
+
+            const oTabShow = document.querySelectorAll("#tab-show li img");
+            if (oTabList[i].textContent === "Drink") {
+                oTabShow.forEach((image, index) => {
+                    image.src = DRINK[index]
+                    image.alt = DRINK[index].split("/").pop().split("-")[1].split(".")[0];
+                });
+            } else if (oTabList[i].textContent === "Food") {
+                oTabShow.forEach((image, index) => {
+                    image.src = FOOD[index]
+                    image.alt = FOOD[index].split("/").pop().split("-")[1].split(".")[0];
+                });
+            } else if (oTabList[i].textContent === "Plant") {
+                oTabShow.forEach((image, index) => {
+                    image.src = PLANT[index]
+                    image.alt = PLANT[index].split("/").pop().split("-")[1].split(".")[0];
+                });
+            }
+        });
+    }
 }
 
 main()
