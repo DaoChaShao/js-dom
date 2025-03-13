@@ -16,4 +16,7 @@ import {faker} from 'https://esm.sh/@faker-js/faker'`. Besides, you can find the
    the [website](https://fakerjs.dev/guide/usage.html).
 4. ~~There could be two files named `package-lock.json`in the root folder and node_modules. You can delete the one in
    the
-   node_modules with the following command `rm -f node_modules/.package-lock.json`.~~  
+   node_modules with the following command `rm -f node_modules/.package-lock.json`.~~
+5. Simultaneously, you must add `type="module"` in the script tag in the HTML file to import the module. Otherwise, it
+   will
+   not work.
