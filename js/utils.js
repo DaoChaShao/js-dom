@@ -105,3 +105,71 @@ export function timeShow(now) {
     const second = now.getSeconds();
     return `${hour}:${minute}:${second}`;
 }
+
+export function nameSelector(names) {
+    const randIndex = Math.floor(Math.random() * names.length);
+    const randName = names[randIndex];
+    return {randIndex, randName};
+}
+
+const Gender = Object.freeze({
+    MALE: "Male",
+    FEMALE: "Female",
+});
+
+const GENDERS = ["Male", "Female"]
+
+export function commentItemCreator({avatar, name, gender, age, level, email, city, phone, comment, time}) {
+    const oObjGroup = document.querySelector("#comment-item")
+    const oBasic = document.createElement("div")
+    const oContact = document.createElement("div")
+    const oCaption = document.createElement("div")
+
+    const oAvatar = document.createElement("img");
+    oAvatar.src = avatar;
+    oAvatar.alt = name;
+    oAvatar.className = "avatar";
+    oBasic.appendChild(oAvatar);
+
+    const oName = document.createElement("h3");
+    oName.textContent = name;
+    oBasic.appendChild(oName);
+
+    const oGender = document.createElement("p");
+    oGender.textContent = gender;
+    oBasic.appendChild(oGender);
+
+    const oAge = document.createElement("p");
+    oAge.textContent = `Age: ${age}`;
+    oBasic.appendChild(oAge);
+
+    const oLevel = document.createElement("p");
+    oLevel.textContent = `Level: ${level}`;
+    oBasic.appendChild(oLevel);
+
+    const oEmail = document.createElement("p");
+    oEmail.textContent = `Email: ${email}`;
+    oContact.appendChild(oEmail);
+
+    const oCity = document.createElement("p");
+    oCity.textContent = `City: ${city}`;
+    oContact.appendChild(oCity);
+
+    const oPhone = document.createElement("p");
+    oPhone.textContent = `Phone: ${phone}`;
+    oContact.appendChild(oPhone);
+
+    const oComment = document.createElement("p");
+    oComment.textContent = `Comment: ${comment}`;
+    oCaption.appendChild(oComment);
+
+    const oTime = document.createElement("p");
+    oTime.textContent = `Time: ${time}`;
+    oCaption.appendChild(oTime);
+
+    oObjGroup.appendChild(oBasic);
+    oObjGroup.appendChild(oContact);
+    oObjGroup.appendChild(oCaption);
+
+    return oObjGroup;
+}
