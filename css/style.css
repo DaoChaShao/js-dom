@@ -66,7 +66,7 @@ button {
     text-align: center;
 }
 
-.slider-list, .slider-time-list {
+.slider-list, .slider-time-list, #tab-list li, #tab-show li {
     width: 100px;
     display: flex;
     justify-content: center;
@@ -87,4 +87,29 @@ button {
 .slider-list li.active, .slider-time-list li.time-active {
     background-color: black;
     opacity: 1;
+}
+
+#faker label, #event-key-show {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar {
+    width: 100px;
+}
+
+#tab-list, #tab-show {
+    display: flex;
+    flex-direction: row;
+}
+
+.tab-list-active {
+    color: #f00;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#tab-show li img {
+    width: 100px;
+    cursor: pointer;
 }
