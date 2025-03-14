@@ -16,6 +16,7 @@ import {
     removeFirst,
     removeLast,
     replace,
+    startCountdown,
     timeShow,
     welcomeButton,
     welcomeLink,
@@ -30,8 +31,8 @@ function main() {
     const a = parseFloat(randomFloat(1, 10).toFixed(2));
     const b = parseFloat(randomFloat(1, 10).toFixed(2));
     const result = parseFloat(additionOld(a, b).toFixed(2));
-    const oMain = document.getElementById("addition");
-    oMain.innerHTML = `${a} + ${b} = ${result}`;
+    const oAddition = document.getElementById("addition");
+    oAddition.innerHTML = `${a} + ${b} = ${result}`;
 
     const oBox = document.querySelector("#box");
     oBox.innerText = "Container";
@@ -214,6 +215,37 @@ function main() {
     }, 1000);
     console.log(timer);
 
+    let countdown;
+    const oTimeCountdown = document.querySelector("#time-countdown");
+    const oTimeMinute = document.createElement("input");
+    oTimeMinute.type = "number";
+    oTimeMinute.min = "0";
+    oTimeMinute.max = "59";
+    oTimeMinute.value = "0";
+    oTimeCountdown.appendChild(oTimeMinute);
+    const oTimeSecond = document.createElement("input");
+    oTimeSecond.type = "number";
+    oTimeSecond.min = "0";
+    oTimeSecond.max = "59";
+    oTimeSecond.value = "10";
+    oTimeCountdown.appendChild(oTimeSecond);
+    const oCountMinute = document.createElement("label");
+    oTimeCountdown.appendChild(oCountMinute);
+    const oCountSecond = document.createElement("label");
+    oTimeCountdown.appendChild(oCountSecond);
+    const oTimeButton = document.createElement("button");
+    oTimeButton.type = "button";
+    oTimeButton.textContent = "Countdown";
+    oTimeCountdown.appendChild(oTimeButton);
+    oTimeButton.addEventListener("click", _ => {
+        const targetTime = new Date();
+        targetTime.setMinutes(targetTime.getMinutes() + parseInt(oTimeMinute.value));
+        targetTime.setSeconds(targetTime.getSeconds() + parseInt(oTimeSecond.value));
+
+        oTimeButton.disabled = true;
+        startCountdown(countdown, targetTime, oCountMinute, oCountSecond, oTimeButton);
+    });
+
     const oCountdownButton = document.querySelector("#countdown");
     let seconds = 5;
     timer = setInterval(function () {
@@ -355,6 +387,27 @@ function main() {
             }
         });
     }
+
+    const oMain = document.querySelector("#main");
+    const oTopButton = document.querySelector("#top");
+    const oHeader = document.querySelector("#header");
+    // CSS variable getter
+    const oRoot = document.documentElement;
+    const headerHeight = getComputedStyle(oRoot).getPropertyValue("--header-height").trim();
+    // console.log(headerHeight);
+    oMain.addEventListener("scroll", e => {
+        // console.log(e.target.scrollTop);
+        if (e.target.scrollTop > 100) {
+            oTopButton.style.display = "block";
+            oTopButton.addEventListener("click", _ => {
+                oMain.scrollTo({top: 0, behavior: "smooth"});
+            });
+            oHeader.style.top = "0";
+        } else {
+            oTopButton.style.display = "none";
+            oHeader.style.top = headerHeight;
+        }
+    });
 }
 
 main()
