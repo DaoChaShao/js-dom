@@ -6,159 +6,168 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div id="addition"></div>
+<div id="main">
+    <div id="header"></div>
 
-<div id="box">Box</div>
+    <div id="addition"></div>
 
-<div id="welcome">
-    <a href="javascript:void(0);" id="welcome-link">Click</a>
-    <input type="button" value="Click" id="welcome-button">
-</div>
+    <div id="box">Box</div>
 
-<div id="text"></div>
-
-<div id="lists">
-    <ul id="list">
-        <li>Python</li>
-        <li>Java</li>
-        <li>JavaScript</li>
-        <li>PHP</li>
-        <li>HTML</li>
-    </ul>
-</div>
-
-<div id="add">
-    <label for="add-input">Content </label><input type="text" id="add-input">
-    <input type="button" value="Add" id="add-add">
-    <input type="button" value="Remove First" id="remove-first">
-    <input type="button" value="Remove Last" id="remove-last">
-    <input type="button" value="Copy List" id="copy-list">
-</div>
-
-<div id="replace">
-    <label for="replace-input" id="replace-label">JavaScript </label><input type="text" id="replace-input">
-    <input type="button" value="Replace" id="replace-button">
-</div>
-
-
-<div id="colour">
-    <input type="button" value="Change Colour" id="change">
-    <div id="colour-box"></div>
-</div>
-
-<div id="event"></div>
-
-<div id="user"></div>
-
-<div id="image"></div>
-
-<div id="class-name">
-    <button type="button" id="class-name-button">Change Class</button>
-    <div id="class-name-show"></div>
-</div>
-
-<div class="slider">
-    <div>
-        <img src="" alt="" id="slider-image">
+    <div id="welcome">
+        <a href="javascript:void(0);" id="welcome-link">Click</a>
+        <input type="button" value="Click" id="welcome-button">
     </div>
-    <div>
-        <div id="slider-content"></div>
-        <ul class="slider-list">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+
+    <div id="text"></div>
+
+    <div id="lists">
+        <ul id="list">
+            <li>Python</li>
+            <li>Java</li>
+            <li>JavaScript</li>
+            <li>PHP</li>
+            <li>HTML</li>
         </ul>
     </div>
-    <div class="slider-button">
-        <button type="button" id="prev">Prev</button>
-        <button type="button" id="next">Next</button>
+
+    <div id="add">
+        <label for="add-input">Content </label><input type="text" id="add-input">
+        <input type="button" value="Add" id="add-add">
+        <input type="button" value="Remove First" id="remove-first">
+        <input type="button" value="Remove Last" id="remove-last">
+        <input type="button" value="Copy List" id="copy-list">
     </div>
-</div>
 
-<div id="hide">
-    <label for="hide-input">Password </label><input type="text" id="hide-input">
-    <button type="button" id="hide-button">Hide</button>
-</div>
+    <div id="replace">
+        <label for="replace-input" id="replace-label">JavaScript </label><input type="text" id="replace-input">
+        <input type="button" value="Replace" id="replace-button">
+    </div>
 
-<div>
+    <div id="colour">
+        <input type="button" value="Change Colour" id="change">
+        <div id="colour-box"></div>
+    </div>
+
+    <div id="event"></div>
+
+    <div id="user"></div>
+
+    <div id="image"></div>
+
+    <div id="class-name">
+        <button type="button" id="class-name-button">Change Class</button>
+        <div id="class-name-show"></div>
+    </div>
+
+    <div class="slider">
+        <div>
+            <img src="" alt="" id="slider-image">
+        </div>
+        <div>
+            <div id="slider-content"></div>
+            <ul class="slider-list">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="slider-button">
+            <button type="button" id="prev">Prev</button>
+            <button type="button" id="next">Next</button>
+        </div>
+    </div>
+
+    <div id="hide">
+        <label for="hide-input">Password </label><input type="text" id="hide-input">
+        <button type="button" id="hide-button">Hide</button>
+    </div>
+
     <div>
-        <label for="check-all">All </label><input type="checkbox" id="check-all">
+        <div>
+            <label for="check-all">All </label><input type="checkbox" id="check-all">
+        </div>
+        <div>
+            <label for="check-1">1st </label><input type="checkbox" name="number" id="check-1">
+            <label for="check-2">2nd </label><input type="checkbox" name="number" id="check-2">
+            <label for="check-3">3th </label><input type="checkbox" name="number" id="check-3">
+        </div>
     </div>
+
     <div>
-        <label for="check-1">1st </label><input type="checkbox" name="number" id="check-1">
-        <label for="check-2">2nd </label><input type="checkbox" name="number" id="check-2">
-        <label for="check-3">3th </label><input type="checkbox" name="number" id="check-3">
+        <div>
+            <button type="button" id="click-all">Click All</button>
+        </div>
+        <div>
+            <button type="button" name="clicks">Select 1</button>
+            <button type="button" name="clicks">Select 2</button>
+            <button type="button" name="clicks">Select 3</button>
+        </div>
     </div>
-</div>
 
-<div>
+    <div id="cus-data">
+        <div data-id="10" data-number="100">1000</div>
+        <div data-id="20" data-number="200">2000</div>
+        <div data-id="30" data-number="300">3000</div>
+    </div>
+
+    <div id="time-now"></div>
+
+    <div id="time-countdown"></div>
+
     <div>
-        <button type="button" id="click-all">Click All</button>
+        <button type="button" id="countdown" disabled></button>
     </div>
+
     <div>
-        <button type="button" name="clicks">Select 1</button>
-        <button type="button" name="clicks">Select 2</button>
-        <button type="button" name="clicks">Select 3</button>
+        <div>
+            <img src="" alt="" id="slider-time-image">
+        </div>
+        <div>
+            <div id="slider-time-content"></div>
+            <ul class="slider-time-list">
+                <li class="time-active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
     </div>
-</div>
 
-<div id="cus-data">
-    <div data-id="10" data-number="100">1000</div>
-    <div data-id="20" data-number="200">2000</div>
-    <div data-id="30" data-number="300">3000</div>
-</div>
+    <div id="faker"></div>
 
-<div id="time-now"></div>
+    <div id="event-key">
+        <div>
+            <label for="event-key-input">Comment </label><input type="text" id="event-key-input">
+            <input type="button" value="Submit" id="event-key-button">
+        </div>
+        <div id="event-key-show">
+            <label id="event-key-label"></label>
+        </div>
+    </div>
 
-<div>
-    <button type="button" id="countdown" disabled></button>
-</div>
+    <div id="comment-item"></div>
 
-<div>
+    <div id="tab">
+        <div>
+            <ul id="tab-list">
+                <li class="tab-list-active">Drink</li>
+                <li>Plant</li>
+                <li>Food</li>
+            </ul>
+        </div>
+        <div>
+            <ul id="tab-show">
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+                <li><img src="" alt=""></li>
+            </ul>
+        </div>
+    </div>
+
     <div>
-        <img src="" alt="" id="slider-time-image">
-    </div>
-    <div>
-        <div id="slider-time-content"></div>
-        <ul class="slider-time-list">
-            <li class="time-active"></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
-    </div>
-</div>
-
-<div id="faker"></div>
-
-<div id="event-key">
-    <div>
-        <label for="event-key-input">Comment </label><input type="text" id="event-key-input">
-        <input type="button" value="Submit" id="event-key-button">
-    </div>
-    <div id="event-key-show">
-        <label id="event-key-label"></label>
-    </div>
-</div>
-
-<div id="comment-item"></div>
-
-<div id="tab">
-    <div>
-        <ul id="tab-list">
-            <li class="tab-list-active">Drink</li>
-            <li>Plant</li>
-            <li>Food</li>
-        </ul>
-    </div>
-    <div>
-        <ul id="tab-show">
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
-            <li><img src="" alt=""></li>
-        </ul>
+        <button type="button" id="top">Top</button>
     </div>
 </div>
 </body>
