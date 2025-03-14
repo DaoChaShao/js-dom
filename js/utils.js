@@ -106,6 +106,29 @@ export function timeShow(now) {
     return `${hour}:${minute}:${second}`;
 }
 
+export function startCountdown(timer, targetTime, minute, second, button) {
+    timer = setInterval(() => {
+        const {minutes, seconds} = timeCountdown(targetTime);
+        minute.textContent = minutes.toString().padStart(2, "0");
+        second.textContent = seconds.toString().padStart(2, "0");
+
+        if (minutes === 0 && seconds === 0) {
+            clearInterval(timer);
+            button.disabled = false;
+        }
+    }, 1000);
+}
+
+export function timeCountdown(targetTime) {
+    const now = Date.now();
+    const diff = targetTime - now;
+
+    const minutes = Math.floor(diff / (1000 * 60) % 60);
+    const seconds = Math.floor(diff / 1000 % 60);
+
+    return {minutes, seconds};
+}
+
 export function nameSelector(names) {
     const randIndex = Math.floor(Math.random() * names.length);
     const randName = names[randIndex];
