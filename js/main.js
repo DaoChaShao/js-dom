@@ -408,6 +408,13 @@ function main() {
             oHeader.style.top = headerHeight;
         }
     });
+
+    const oAutoCloseDiv = document.querySelector("#auto-close");
+    const oAutoLink = document.createElement("a")
+    oAutoLink.href = "pages/auto-close.html";
+    oAutoLink.target = "_self";
+    oAutoLink.textContent = "OPEN NEW PAGE";
+    oAutoCloseDiv.appendChild(oAutoLink);
 }
 
 main()
